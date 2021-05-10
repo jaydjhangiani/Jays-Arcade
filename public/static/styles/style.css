@@ -1,0 +1,108 @@
+body {
+  background-color: rgb(15, 0, 14);
+}
+
+.tabs {
+  background-color: rgb(15, 0, 14) !important;
+}
+
+.client {
+  width: 100%;
+  border-radius: 50%;
+}
+.home-img {
+  background-image: url(../img/home.gif);
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+}
+.brand-img {
+  height: 5rem;
+  padding-left: 15px;
+}
+.navhead {
+  height: 5rem;
+}
+li :hover {
+  color: #7986cb !important;
+}
+.ctest {
+  padding-right: 15px;
+}
+.sidenav {
+  padding: 10px;
+}
+
+.mob-drop {
+  position: relative;
+}
+
+.section {
+  padding-top: 4vw;
+  padding-bottom: 4vm;
+}
+
+.tabs > .indicator {
+  background-color: #7986cb !important;
+}
+
+.tabs .tab a:hover {
+  color: #3949ab !important;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background: transparent !important;
+}
+
+.ftext {
+  padding-top: 10px;
+}
+
+.atext {
+  padding-right: 5px;
+}
+
+blockquote svg.svg-inline--fa {
+  color: #7986cb;
+  margin: 1rem;
+}
+
+.clients-hr {
+  border: 0.1rem solid #3949ab;
+}
+
+.pad {
+  padding-left: 50px !important;
+}
+
+.caption {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 30%;
+  z-index: 1;
+  color: white;
+  text-transform: uppercase;
+}
+
+.caption h2 {
+  text-shadow: 0.1rem 0.1rem 0.8rem black;
+  padding-bottom: 1 rem;
+}
+
+.caption h5 {
+  text-shadow: 0.1rem 0.1rem 0.5rem black;
+  padding-bottom: 1.6rem;
+}
+
+@media screen and (max-width: 607px) {
+  header {
+    min-height: 400px;
+  }
+  .client {
+    max-width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+}

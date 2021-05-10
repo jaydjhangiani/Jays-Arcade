@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            
+    <!-- stylesheets--->
+    <link rel = "stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="static/css/style.css">
+    
+            <!-- prefetch--->
+    <link rel = "prefetch" href="static/images/10.png">
+    <link rel = "prefetch" href="static/images/2.png">
+    <link rel = "prefetch" href="static/images/3.png">
+    <link rel = "prefetch" href="static/images/4.png">
+    <link rel = "prefetch" href="static/images/5.png">
+    <link rel = "prefetch" href="static/images/6.png">
+    <link rel = "prefetch" href="static/images/7.png">
+    <link rel = "prefetch" href="static/images/8.png">
+    <link rel = "prefetch" href="static/images/9.png">
+    <link rel = "prefetch" href="static/images/10.png">
+    <link rel = "prefetch" href="static/images/A.png">
+    <link rel = "prefetch" href="static/images/Q.png">
+    <link rel = "prefetch" href="static/images/K.png">
+    <link rel="icon" href="static/images/favicon.png" type="image/icon type">
+    		<!-- Firebase--->
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+
+    <title>Blackjack</title>
+</head>
+<body>
+
+    <div class = 'container-5'>
+        <h2>BLACKJACK</h2>
+        <h3><span id = 'blackjack-result'>Lets Play!</span></h3>
+        
+        <div class="flex-blackjack-row-1"> 
+            <div id = "your-box">
+                <h2>You : <span id="your-blackjack-result">0</span></h2>
+            </div>
+
+            <div id="dealer-box">
+                <h2>Dealer : <span id = "dealer-blackjack-result">0</h2>
+            </div>
+        </div>
+
+        <div class="flex-blackjack-row-2">
+            <div>
+                <button class="btn-lg btn-primary mr-2" id="blackjack-hit-button">Hit</button>
+                <button class="btn-lg btn-warning mr-2" id="blackjack-stand-button">Stand</button>
+                <button class="btn-lg btn-danger "id="blackjack-deal-button">Deal</button>
+            </div>
+        </div>
+
+        <div class="flex-blackjack-row-3">
+            <table>
+                <th colspan="3"><span id='lol'>You've got 5 chances</span></th>
+                <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Draws</th>
+                </tr>
+                <tr>
+                    <td><span id="wins">0</span></td>
+                    <td><span id="losses">0</span></td>
+                    <td><span id="draws">0</span></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <script src="../../static/js/app.js"></script>
+    <script src = "static/js/index.js"></script>
+    
+</body>
+</html> 

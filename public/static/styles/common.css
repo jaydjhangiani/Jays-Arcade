@@ -1,0 +1,35 @@
+p,
+th {
+  text-align: center;
+}
+
+td {
+  width: 30% !important;
+}
+body {
+  background-color: rgb(15, 0, 14);
+}
+.navhead {
+  height: 5rem;
+}
+li :hover {
+  color: #7986cb !important;
+}
+.brand-img {
+  height: 5rem;
+  padding-left: 15px;
+}
+.sidenav {
+  padding: 10px;
+}
+
+.mob-drop {
+  position: relative;
+}
+
+.section {
+  padding-bottom: 4vm;
+}
+.pad {
+  padding-left: 50px !important;
+}

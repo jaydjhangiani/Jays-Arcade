@@ -1,0 +1,28 @@
+body{
+    padding-top: 20px;
+    background-color: black;
+    color: aliceblue;
+}
+.container-3{
+    text-align: center;
+    border: 1px solid aliceblue;
+    margin: 0 auto;
+    width: 75%;
+    border-radius: 25px;
+}
+.but{
+    padding: 15px;
+}
+
+
+.flex-box-rps img:hover{
+    box-shadow: 0px 10px 50px rgba(37,50,223,1);
+}
+
+.flex-box-rps{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid black;
+}

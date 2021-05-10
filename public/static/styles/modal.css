@@ -1,0 +1,3 @@
+.input-field input:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #3949ab !important;
+}
