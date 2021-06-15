@@ -3,7 +3,6 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="static/styles/common.css" />
 		<!-- font awesome -->
 		<link
 			rel="stylesheet"
@@ -11,6 +10,8 @@
 			integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
 			crossorigin="anonymous"
 		/>
+		<link rel="stylesheet" href="static/styles/common.css" />
+		<link rel="stylesheet" href="static/styles/modal.css" />
 		<!--Import Google Icon Font-->
 		<link
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -21,30 +22,21 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
 		/>
+		<title>Leaderboard</title>
 		<link rel="icon" href="static/img/favicon.png" type="image/icon type">
-		<title>User Profile</title>
-
+		
 		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
 	</head>
-	<style>
-		th,p{
-			text-align: center;
-		}
-		td {
-				width: 30% !important;
-		}
-	</style>	
 	<body>
-		
+
 		<!-- Navbar -->
 		<header>
 			<nav class="nav-wrapper black navhead">
-				<!-- <a href="index.html" class="brand-logo left indigo-text"><img class='brand-img' src="static/img/home.png"></a> -->
-				<a href="index.html" class="brand-logo left "><img class='brand-img' src="static/img/home.jpg"></a>
-				<div class="container ctest right">
+				<a href="index.html" class="brand-logo left indigo-text"><img class='brand-img' src="static/img/home.png"></a>
+				<div class="container right">
 					<a href="" class="sidenav-trigger right" data-target="mobile-menu">
 						<i class="material-icons #3d5afe indigo-text accent-3">menu</i>
 					</a>
@@ -53,8 +45,8 @@
 						<li><a class="dropdown-trigger" href="#!" data-target="dropdown">GAMES<i class="material-icons right">arrow_drop_down</i></a>
 						</li>
 						<li><a href="leaderboard.html">LEADERBOARD</a></li>
-						<li class="logged-out" style="display: none;"><a href="#" class="modal-trigger" data-target="modal-login">LOGIN</a></li>
-						<li class="logged-out" style="display: none;"><a href="#">REGISTER</a></li>
+						<li class="logged-out"style="display: none;" ><a href="#" class="modal-trigger" data-target="modal-login">LOGIN</a></li>
+						<li class="logged-out" style="display: none;"><a href="#" class="modal-trigger" data-target="modal-signup">REGISTER</a></li>
 						<li class="logged-in" style="display: none;"><a href="profile.html">USER PROFILE</a></li>
 						<li class="logged-in" style="display: none;"><a href="https://jaysarcade-chatroom.netlify.app/">CHAT ROOM</a></li>
 						<li class="logged-in" style="display: none;"><a href="index.html" id="logout">LOGOUT</a></li>
@@ -73,7 +65,7 @@
 						<li><a href="index.html" class="white-text">HOME</a></li>
 						<li><a class="dropdown-trigger white-text" href="#!" data-target="dropdown1">GAMES<i class="material-icons right white-text">arrow_drop_down</i></a></li>
 						<li><a href="leaderboard.html" class="white-text">LEADERBOARD</a></li>
-						<li class="logged-out" style="display: none;">
+						<li class="logged-out"style="display: none;" >
 							<a
 								href="#"
 								class="white-text modal-trigger"
@@ -81,9 +73,9 @@
 								>LOGIN</a
 							>
 						</li>
-						<li class="logged-out" style="display: none;"><a href="#" class="white-text">REGISTER</a></li>
+						<li class="logged-out"style="display: none;" ><a href="#" class="white-text modal-trigger" data-target="modal-signup">REGISTER</a></li>
 						<li class="logged-in" style="display: none;"><a href="profile.html" class="white-text">USER PROFILE</a></li>
-						<li class="logged-in" style="display: none;"><a href="https://jaysarcade-chatroom.netlify.app/" class="white-text">CHAR ROOM</a></li>
+						<li class="logged-in" style="display: none;"><a href="https://jaysarcade-chatroom.netlify.app/" class="white-text">CHAT ROOM</a></li>
 						<li class="logged-in" style="display: none;"><a href="index.html" id="logout1"class="white-text">LOGOUT</a></li>
 					</ul>
 					<!-- Dropdown Structure -->
@@ -99,74 +91,132 @@
 			</nav>
 		</header>
 
-		<!-- User Profile --->
-		<section class="section container">
-			<h2 class="indigo-text text-lighten-2 center">User Profile</h2>
+	
+        <section class="section container">
+			<h2 class="center indigo-text text-lighten-2">Leaderboard</h2>
 			<div class="col s12 l8 offset-l2">
-				<table class="center">
+				<table class="center" id="leader">
 					<tr>
 						<td>
 							<p class="flow-text text-lighten-2 indigo-text">Username</p>
 						</td>
 						<td>
-							<p class="flow-text indigo-text text-lighten-2"><span id="getUname"></span></p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p class="flow-text text-lighten-2 indigo-text">Overall Points</p>
-						</td>
-						<td>
-							<p class=" flow-text indigo-text text-lighten-2"><span id="getScore"></span></p>
+							<p class="flow-text text-lighten-2 indigo-text">Score</p>
 						</td>
 					</tr>
 				</table>
-
-                <h3 class="indigo-text text-lighten-2 center">Game Logs</h3>
-                
-				<table id="user-score-list" class=" indigo-text text-lighten-2">
-                    <tr>
-                        <th>Username</th>
-                        <th>Game</th>
-                        <th>Score</th>
-                    </tr>
-				</table>
+				<table class="center indigo-text text-lighten-2 " id="leader-tb"></table>
 				<br><br>
+				
+
+                <h3 class="indigo-text text-lighten-2 center">Recent High Scores</h3>
+				<table id="score" class=" indigo-text text-lighten-2  ">
+                    <tr>
+                        <td><p class="flow-text">Username</p></td>
+                        <td><p class="flow-text">Game</p></td>
+                        <td><p class="flow-text">Score</p></td>
+					</tr>
+				</table>
+				<table id="score-list" class=" indigo-text text-lighten-2  center"></table>
+                <br><br>
 				</div>
 			</div>
+			
 		</section>
+		
+		<!-- LOGIN MODAL -->
+		<div id="modal-login" class="modal black">
+			<div class="modal-content">
+				<h4 class="indigo-text text-lighten">Login</h4>
+				<br />
+				<form id="login-form">
+					<div class="input-field">
+						<i class="material-icons prefix indigo-text">person_outline</i></a>
+						<input
+							type="email"
+							id="login-email"
+							class="black white-text"
+							required
+						/>
+						<label for="login-email" class="black indigo-text">User Email</label>
+					</div>
+					<div class="input-field">
+						<i class="material-icons prefix indigo-text">lock_outline</i>
+						<input
+							type="password"
+							id="login-password"
+							class="black white-text"
+							required
+						/>
+						<label for="login-password" class="black indigo-text"
+							>Password</label
+						>
+					</div>
+					<div class="input-field center">
+						<button class="btn indigo">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- SIGN UP MODAL -->
+		<div id="modal-signup" class="modal black form">
+			<div class="modal-content">
+			  <h4 class="indigo-text text-darken-2">Sign up</h4><br />
+			  <form id="reg-form">
+				<div class="input-field">
+					<i class="material-icons prefix indigo-text">person_outline</i></a
+					>
+					<input type="text" id="rusername" class="white-text" autocomplete="off" required/>
+					<label for="rusername" class="indigo-text text-lighten-2">Your Username</label>
+				</div>
+				<div class="input-field">
+					<i class="material-icons prefix indigo-text">mail_outline</i></a
+					>
+					<input type="email" id="remail" class="white-text" autocomplete="off"  required/>
+					<label for="remail" class="indigo-text text-lighten-2">Your Email</label>
+				</div>
+				<div class="input-field">
+					<i class="material-icons prefix indigo-text">lock_outline</i>
+					<input type="password" id="rpassword" class="white-text" autocomplete="off" required/>
+					<label for="rpassword" class="indigo-text text-lighten-2">Your Password</label>
+				</div>
+				<div class="input-field center">
+					<button class="btn indigo">Submit</button>
+				</div>
+			  </form>
+			</div>
+		</div>
 
 		<!-- Footer -->
 		<footer class="page-footer black">
 			<div class="container">
 				<div class="row">
-					
-					<!-- <div class="col s12 l12">
+					 <div class="col s12 l12">
 						<h5 class="center-align ">Get In Touch</h5>
 						<div class="center">
 							<a href="https://jayj.netlify.app" target="blank" class="white-text btn-small black"
 								><i class="fas fa-globe"></i
 							></a>
-							<a href="https://www.linkedin.com/in/jayjhangiani/" target="blank" class="white-text btn-small black"
+							<a href="https://www.linkedin.com/in/jaydjhangiani/" target="blank" class="white-text btn-small black"
 								><i class="fab fa-linkedin"></i
 							></a>
-							<a href="https://github.com/jjhangiani" target="blank" class="white-text btn-small black"
+							<a href="https://github.com/jaydjhangiani" target="blank" class="white-text btn-small black"
 								><i class="fab fa-github"></i
 							></a>
 						</div>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			<div class="footer-copyright black">
-				<!-- <div class="container center-align">
-					Jay Jhangiani © 2021 All rights reserved.
-				</div> -->
 				<div class="container center-align">
-					BE C12 Grp 7 © 2021 All rights reserved.
+					Jay Jhangiani © 2021 All rights reserved.
 				</div>
 			</div>
 		</footer>
 
+
+		<!-- Compiled and minified JavaScript -->
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 		<script>
@@ -174,11 +224,19 @@
 				$(".sidenav").sidenav();
 				$(".dropdown-trigger").dropdown({ coverTrigger: false });
 			});
+            document.addEventListener("DOMContentLoaded", function () {
+				var modals = document.querySelectorAll(".modal");
+				M.Modal.init(modals);
+
+				var items = document.querySelectorAll(".collapsible");
+				M.Collapsible.init(items);
+			});
 		</script>
 		<script src="static/js/app.js"></script>
 		<script src="static/js/auth.js"></script>
 		<script src="static/js/index.js"></script>
-		<script src="static/js/profile.js"></script>
+		<script src ="static/js/cred.js"></script>
+		<script src="static/js/board.js"></script>
 		<script type="text/javascript">
 			(function() {
 			emailjs.init("user_KpgAvtpVmBU0oHG7n95Hs");
